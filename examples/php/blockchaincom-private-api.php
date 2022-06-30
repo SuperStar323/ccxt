@@ -8,8 +8,10 @@ date_default_timezone_set('UTC');
 
 $exchange = new \ccxt\blockchaincom(array(
     'timeout' => 300000,
-    'secret' => 'YOUR_SECRET_KEY'
+    'secret' => 'eyJhbGciOiJFUzI1NiIsInR5cCI6IkFQSSJ9.eyJhdWQiOiJtZXJjdXJ5IiwidWlkIjoiYWQxOTE1MjMtMTZkZS00ZDVjLTgyZTMtMTY4YjFiMDVjZjg1IiwiaXNzIjoiYmxvY2tjaGFpbiIsInJkbyI6ZmFsc2UsImlhdCI6MTY1MTA4Mjc0NCwianRpIjoiYTkzNWM1Y2QtZjZlNC00NjgxLTlhNDctZmMyZmNjNGMzNGYyIiwic2VxIjozMjAwMDcsIndkbCI6dHJ1ZX0.H4na6uVX0iDmI8PgROFnNqwTTjHAuf5jw0Q3pts3s7lGVrAuxzSKqQCQgIC3BxXanytmIQWDlV5RSPqChjQUuRE='
 ));
+
+$exchange->urls['api']['private'] = "https://api.staging.blockchain.info/v3/exchange";
 
 $withdrawal_beneficiary = 'BENEFICIARY';
 $symbol = 'BTC/USDT';
@@ -89,6 +91,12 @@ try {
     $result = $exchange->fetch_withdrawal_whitelist();
     printf("Withdrawal white list" . "\n");
     var_dump( $result[0] );
+    printf("\n--------------------------------------------------------------\n");
+
+    // fetch withdrawal white list by currency
+    $result = $exchange->fetch_withdrawal_whitelist_by_currency('BTC');
+    printf("Withdrawal white list by currency" . "\n");
+    var_dump( $result );
     printf("\n--------------------------------------------------------------\n");
 
     // fetch withdrawal white list by currency
