@@ -99,7 +99,7 @@ try {
 
     // fetch withdrawal white list by currency
     $result = $exchange->fetch_withdrawal_whitelist_by_currency('BTC');
-    printf("Withdrawal white list by currency" . "\n");
+    printf("Withdrawal whitelist by currency" . "\n");
     var_dump( $result );
     printf("\n--------------------------------------------------------------\n");
 
