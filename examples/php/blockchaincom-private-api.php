@@ -8,10 +8,8 @@ date_default_timezone_set('UTC');
 
 $exchange = new \ccxt\blockchaincom(array(
     'timeout' => 300000,
-    'secret' => 'eyJhbGciOiJFUzI1NiIsInR5cCI6IkFQSSJ9.eyJhdWQiOiJtZXJjdXJ5IiwidWlkIjoiYWQxOTE1MjMtMTZkZS00ZDVjLTgyZTMtMTY4YjFiMDVjZjg1IiwiaXNzIjoiYmxvY2tjaGFpbiIsInJkbyI6ZmFsc2UsImlhdCI6MTY1MTA4Mjc0NCwianRpIjoiYTkzNWM1Y2QtZjZlNC00NjgxLTlhNDctZmMyZmNjNGMzNGYyIiwic2VxIjozMjAwMDcsIndkbCI6dHJ1ZX0.H4na6uVX0iDmI8PgROFnNqwTTjHAuf5jw0Q3pts3s7lGVrAuxzSKqQCQgIC3BxXanytmIQWDlV5RSPqChjQUuRE='
+    'secret' => 'YOUR_SECRET_KEY'
 ));
-
-$exchange->urls['api']['private'] = "https://api.staging.blockchain.info/v3/exchange";
 
 $withdrawal_beneficiary = 'BENEFICIARY';
 $symbol = 'BTC/USDT';
