@@ -839,12 +839,15 @@ module.exports = class blockchaincom extends Exchange {
     }
 
     async withdraw (code, amount, address, tag = undefined, params = {}) {
+        if (address !== null) {
+            throw new ExchangeError ("This method doesn't support address, you need to send it in null and add beneficiary attribute in params.");
+        }
         await this.loadMarkets ();
         const currency = this.currency (code);
         const request = {
             'amount': amount,
             'currency': currency['id'],
-            // 'beneficiary': address/id,
+            // 'beneficiary': address,
             'sendMax': false,
         };
         const response = await this.privatePostWithdrawals (this.extend (request, params));
