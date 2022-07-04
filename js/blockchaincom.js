@@ -839,8 +839,20 @@ module.exports = class blockchaincom extends Exchange {
     }
 
     async withdraw (code, amount, address, tag = undefined, params = {}) {
+        /**
+         * @method
+         * @name blockchaincom#withdraw
+         * @description Generate new withdraw.
+         * @param {str} code currency
+         * @param {float} amount amount 
+         * @param {str} adress Blockchain does not support to provide addresses for withdrawals.
+         * @param {str} tag
+         * @param {dict} params provide beneficiary attribute with whitelist id in params instead. 
+         * This can be obtained through whitelist endpoint: https://api.blockchain.info/v3/exchange/whitelist
+         * @returns {dict} An [order structure]{@link https://docs.ccxt.com/en/latest/manual.html#order-structure}
+         */
         if (address !== null) {
-            throw new ExchangeError ("This method doesn't support address, you need to send it in null and add beneficiary attribute in params.");
+            throw new ExchangeError ("This method doesn't support the address. Provide beneficiary attribute in params instead.");
         }
         await this.loadMarkets ();
         const currency = this.currency (code);
